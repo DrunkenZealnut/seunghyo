@@ -109,8 +109,8 @@ export default function App() {
   };
 
   const navTo = (p: string) => {
-    if (p === "의견함") { window.location.href = "/opinions"; return; }
-    if (p === "후원") { window.location.href = "/donate"; return; }
+    const routes: Record<string, string> = { "소개": "/about", "공약": "/pledges", "소식": "/news", "의견함": "/opinions", "후원": "/donate" };
+    if (routes[p]) { window.location.href = routes[p]; return; }
     setPage(p); setMobileMenu(false); window.scrollTo(0,0);
   };
 
