@@ -1,0 +1,83 @@
+{
+  "version": "2.0",
+  "lastUpdated": "2026-04-13T02:40:31.644Z",
+  "activeFeatures": [
+    "seunghyo"
+  ],
+  "primaryFeature": "seunghyo",
+  "features": {
+    "seunghyo": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-04-13T02:38:37.026Z",
+        "lastUpdated": "2026-04-13T02:40:31.644Z"
+      },
+      "lastFile": "/Users/zealnutkim/Documents/DEV/Election2026/seunghyo/src/app/storage.ts"
+    }
+  },
+  "pipeline": {
+    "currentPhase": 1,
+    "level": "Dynamic",
+    "phaseHistory": []
+  },
+  "session": {
+    "startedAt": "2026-04-13T02:33:06.311Z",
+    "onboardingCompleted": false,
+    "lastActivity": "2026-04-13T02:40:31.644Z"
+  },
+  "history": [
+    {
+      "timestamp": "2026-04-13T02:38:37.026Z",
+      "feature": "seunghyo",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-13T02:38:38.553Z",
+      "feature": "seunghyo",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-13T02:38:43.607Z",
+      "feature": "seunghyo",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-13T02:39:11.417Z",
+      "feature": "seunghyo",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-13T02:39:33.941Z",
+      "feature": "seunghyo",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-13T02:39:58.364Z",
+      "feature": "seunghyo",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-13T02:40:10.008Z",
+      "feature": "seunghyo",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-13T02:40:31.644Z",
+      "feature": "seunghyo",
+      "phase": "do",
+      "action": "updated"
+    }
+  ]
+}
