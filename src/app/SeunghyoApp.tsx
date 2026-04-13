@@ -108,7 +108,11 @@ export default function App() {
     setSubmitted(s => ({ ...s, donor: true }));
   };
 
-  const navTo = (p: string) => { setPage(p); setMobileMenu(false); window.scrollTo(0,0); };
+  const navTo = (p: string) => {
+    if (p === "의견함") { window.location.href = "/opinions"; return; }
+    if (p === "후원") { window.location.href = "/donate"; return; }
+    setPage(p); setMobileMenu(false); window.scrollTo(0,0);
+  };
 
   return (
     <div style={{ fontFamily: "'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif", background: "#F5F7FF", minHeight: "100vh", color: "#0A0F2C" }}>
