@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "김승효 - 함께 만드는 내일",
-  description: "김승효 후보 공식 홈페이지",
+  title: "이승효 - 함께 만드는 내일",
+  description: "이승효 후보 공식 홈페이지",
 };
 
 export default function RootLayout({
