@@ -61,6 +61,11 @@ const CARDS: SampleCard[] = [
     { text: "오세훈 서울시정의 피해 회복" },
     { text: "공직자 헌정질서 책임 강화" },
   ]},
+  { id: "p9", num: "09", em: "Infra · 공공 인프라 개발", title: "우리 동네 큰 땅, 공공의 자산으로", accent: true, items: [
+    { text: "", bold: "이문 차량사업소 복합개발", after: " 도시계획위원회 심의에서 공공임대·보육·노인복지·청년주거 비율 명시 확보" },
+    { text: "연탄공장 이전 부지·철도 하부공간을 사익 개발이 아닌 주민 생활·공공시설로 — 공공기여 비율 조례화" },
+    { text: "신이문역 역세권 개발이익의 지역 환원 장치 명문화" },
+  ]},
 ];
 
 export default function SamplePledgeCards() {

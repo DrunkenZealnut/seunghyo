@@ -33,7 +33,7 @@ export default function App() {
             </div>
             <div className="cta-row">
               <a className="btn red" href="/pledges">
-                8대 약속 보기 →
+                9대 약속 보기 →
               </a>
             </div>
           </div>
@@ -80,7 +80,7 @@ export default function App() {
 
       <section className="block" style={{ paddingTop: 0 }}>
         <span className="eyebrow">Pledges · 핵심 약속</span>
-        <h2 className="sec-title">동네를 바꾸는 8대 약속, 미리보기</h2>
+        <h2 className="sec-title">동네를 바꾸는 9대 약속, 미리보기</h2>
         <div className="promises">
           <a className="pr" href="/pledges#p1">
             <div className="pn">01</div>
@@ -105,7 +105,7 @@ export default function App() {
         </div>
         <div className="more">
           <a className="btn navy" href="/pledges">
-            8대 약속 전체 보기 →
+            9대 약속 전체 보기 →
           </a>
         </div>
       </section>
