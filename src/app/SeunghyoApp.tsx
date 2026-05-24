@@ -79,6 +79,38 @@ export default function App() {
       </section>
 
       <section className="block" style={{ paddingTop: 0 }}>
+        <span className="eyebrow">Music Video · 달빛어린이병원</span>
+        <h2 className="sec-title">동대문구에는 달빛어린이병원이 필요합니다</h2>
+        <div
+          style={{
+            position: "relative",
+            paddingBottom: "56.25%",
+            height: 0,
+            overflow: "hidden",
+            borderRadius: 12,
+            boxShadow: "0 8px 24px rgba(0,0,0,0.08)",
+            marginTop: 12,
+          }}
+        >
+          <iframe
+            src="https://www.youtube.com/embed/cl-YVWBjCQ8"
+            title="달빛어린이병원 뮤직비디오"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen
+            style={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              width: "100%",
+              height: "100%",
+              border: 0,
+            }}
+          />
+        </div>
+      </section>
+
+      <section className="block" style={{ paddingTop: 0 }}>
         <span className="eyebrow">Pledges · 핵심 약속</span>
         <h2 className="sec-title">동네를 바꾸는 9대 약속, 미리보기</h2>
         <div className="promises">
