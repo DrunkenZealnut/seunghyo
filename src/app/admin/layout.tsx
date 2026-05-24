@@ -8,6 +8,7 @@ import {
   Heart,
   MessageSquare,
   HandHeart,
+  BarChart3,
   LogOut,
   Menu,
   X,
@@ -15,6 +16,7 @@ import {
 
 const MENU = [
   { label: "대시보드", href: "/admin", icon: LayoutDashboard },
+  { label: "방문자 통계", href: "/admin/visitors", icon: BarChart3 },
   { label: "응원 메시지", href: "/admin/cheers", icon: Heart },
   { label: "주민 의견", href: "/admin/opinions", icon: MessageSquare },
   { label: "후원자 관리", href: "/admin/donations", icon: HandHeart },

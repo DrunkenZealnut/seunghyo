@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Noto_Sans_KR, Archivo, Black_Han_Sans, Geist_Mono } from "next/font/google";
+import VisitTracker from "@/components/visit-tracker";
 import "./globals.css";
 
 const notoKr = Noto_Sans_KR({
@@ -45,7 +46,10 @@ export default function RootLayout({
       lang="ko"
       className={`${notoKr.variable} ${archivo.variable} ${blackHanSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <VisitTracker />
+        {children}
+      </body>
     </html>
   );
 }

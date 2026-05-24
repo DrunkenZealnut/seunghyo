@@ -6,8 +6,8 @@ export function adminHeaders(): Record<string, string> {
   };
 }
 
-export async function adminGet(params: string) {
-  const res = await fetch(`/api/admin/data?${params}`, {
+export async function adminGet(params: string, endpoint = "/api/admin/data") {
+  const res = await fetch(`${endpoint}?${params}`, {
     headers: adminHeaders(),
   });
   if (res.status === 401) {
