@@ -1,20 +1,38 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Noto_Sans_KR, Archivo, Black_Han_Sans, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const notoKr = Noto_Sans_KR({
   subsets: ["latin"],
+  weight: ["400", "500", "700", "900"],
+  variable: "--font-noto-kr",
+  display: "swap",
+});
+
+const archivo = Archivo({
+  subsets: ["latin"],
+  weight: ["700", "800", "900"],
+  variable: "--font-archivo",
+  display: "swap",
+});
+
+const blackHanSans = Black_Han_Sans({
+  subsets: ["latin"],
+  weight: ["400"],
+  variable: "--font-black-han-sans",
+  display: "swap",
 });
 
 const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
   subsets: ["latin"],
+  variable: "--font-geist-mono",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "이승효 - 함께 만드는 내일",
-  description: "이승효 후보 공식 홈페이지",
+  title: "이승효 · 일하는 사람의 시의원",
+  description:
+    "일하는 사람의 시의원 이승효 — 동대문구 제2선거구(이문·회기·휘경) 서울시의원 후보, 진보당 기호 5번",
 };
 
 export default function RootLayout({
@@ -25,7 +43,7 @@ export default function RootLayout({
   return (
     <html
       lang="ko"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${notoKr.variable} ${archivo.variable} ${blackHanSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">{children}</body>
     </html>

@@ -40,3 +40,12 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 # .gitignore additions
+
+# bkit state (auto-generated)
+.bkit/runtime/
+
+# broken git backup
+.git.broken/
+
+# editor
+.vscode/

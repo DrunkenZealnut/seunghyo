@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import { supabase } from "@/lib/supabase";
-import { CheckCircle2, AlertTriangle, Heart, Search } from "lucide-react";
-import Navbar from "@/components/navbar";
+import SampleNavbar from "@/components/sample-navbar";
+import SampleFooter from "@/components/sample-footer";
 
 declare global {
   interface Window {
@@ -27,6 +27,40 @@ interface FormData {
   detailAddress: string;
   amount: string;
   depositDate: string;
+}
+
+const inputStyle: React.CSSProperties = {
+  width: "100%",
+  border: "1.5px solid rgba(21,35,63,0.16)",
+  borderRadius: 10,
+  padding: "12px 14px",
+  fontSize: 15,
+  color: "var(--ink)",
+  background: "#fff",
+  fontFamily: "inherit",
+  outline: "none",
+};
+
+function StepBadge({ n }: { n: number }) {
+  return (
+    <span
+      style={{
+        display: "inline-grid",
+        placeItems: "center",
+        width: 26,
+        height: 26,
+        background: "var(--red)",
+        color: "#fff",
+        borderRadius: 999,
+        fontFamily: "var(--font-archivo), system-ui, sans-serif",
+        fontSize: 13,
+        fontWeight: 900,
+        marginRight: 8,
+      }}
+    >
+      {n}
+    </span>
+  );
 }
 
 export default function DonatePage() {
@@ -60,7 +94,10 @@ export default function DonatePage() {
         },
       }).open();
     };
-    if (window.daum?.Postcode) { run(); return; }
+    if (window.daum?.Postcode) {
+      run();
+      return;
+    }
     const s = document.createElement("script");
     s.src = "//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js";
     s.onload = run;
@@ -84,33 +121,20 @@ export default function DonatePage() {
     e.preventDefault();
     setError("");
 
-    if (!form.name.trim()) {
-      setError("이름을 입력해주세요.");
-      return;
-    }
+    if (!form.name.trim()) return setError("이름을 입력해주세요.");
     if (form.residentId1.length !== 6 || form.residentId2.length !== 7) {
-      setError("주민등록번호를 정확히 입력해주세요.");
-      return;
+      return setError("주민등록번호를 정확히 입력해주세요.");
     }
     if (form.phone.replace(/\D/g, "").length < 10) {
-      setError("전화번호를 정확히 입력해주세요.");
-      return;
+      return setError("전화번호를 정확히 입력해주세요.");
     }
-    if (!form.address.trim()) {
-      setError("주소를 입력해주세요.");
-      return;
-    }
+    if (!form.address.trim()) return setError("주소를 입력해주세요.");
     if (!form.amount || Number(form.amount.replace(/,/g, "")) <= 0) {
-      setError("후원금 금액을 입력해주세요.");
-      return;
+      return setError("후원금 금액을 입력해주세요.");
     }
-    if (!form.depositDate) {
-      setError("입금일자를 선택해주세요.");
-      return;
-    }
+    if (!form.depositDate) return setError("입금일자를 선택해주세요.");
 
     setSubmitting(true);
-
     const residentId = `${form.residentId1}-${form.residentId2}`;
     const amountNumber = Number(form.amount.replace(/,/g, ""));
     const { error: dbError } = await supabase.from("donations").insert({
@@ -125,16 +149,13 @@ export default function DonatePage() {
       amount: amountNumber,
       deposit_date: form.depositDate,
     });
-
     setSubmitting(false);
 
     if (dbError) {
-      setError("제출 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.");
       console.error(dbError);
-      return;
+      return setError("제출 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.");
     }
 
-    // 관리자 알림 + 후원자 감사 메일 (실패해도 제출 성공 처리)
     fetch("/api/notify", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -152,275 +173,344 @@ export default function DonatePage() {
 
   if (submitted) {
     return (
-      <div style={{ fontFamily: "'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif" }}>
-        <Navbar activePage="후원" />
-        <div className="flex min-h-screen items-center justify-center bg-sky-50 px-5">
-        <div className="w-full max-w-lg rounded-2xl bg-white p-10 text-center shadow-xl">
-          <CheckCircle2 className="mx-auto mb-4 h-16 w-16 text-green-500" />
-          <h2 className="mb-3 text-2xl font-bold text-sky-800">
-            후원금 입금정보가 접수되었습니다!
-          </h2>
-          <p className="mb-8 leading-relaxed text-sky-700/80">
-            소중한 후원에 깊이 감사드립니다.
-            <br />
-            기부금영수증은 확인 후 발급해 드리겠습니다.
-          </p>
-          <button
-            onClick={() => window.location.reload()}
-            className="inline-block rounded-full bg-gradient-to-r from-sky-500 to-sky-600 px-8 py-3 font-bold text-white shadow-lg transition hover:-translate-y-0.5"
+      <div className="pl-page" style={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}>
+        <SampleNavbar activePage="후원" />
+        <main style={{ flex: 1, display: "grid", placeItems: "center", padding: "40px 22px" }}>
+          <div
+            style={{
+              maxWidth: 480,
+              width: "100%",
+              background: "#fff",
+              borderRadius: 16,
+              padding: "40px 32px",
+              boxShadow: "0 8px 28px rgba(21,35,63,0.08)",
+              border: "1px solid rgba(21,35,63,0.06)",
+              textAlign: "center",
+            }}
           >
-            추가 입력하기
-          </button>
-        </div>
-      </div>
+            <div style={{ fontSize: 56, marginBottom: 14 }}>✅</div>
+            <h2
+              style={{
+                fontFamily: "var(--font-black-han-sans), 'Noto Sans KR', sans-serif",
+                fontSize: 26,
+                color: "var(--navy)",
+                margin: "0 0 12px",
+                fontWeight: 400,
+              }}
+            >
+              후원금 입금정보가 접수되었습니다.
+            </h2>
+            <p style={{ color: "var(--ink-soft)", lineHeight: 1.7, marginBottom: 28 }}>
+              소중한 후원에 깊이 감사드립니다.
+              <br />
+              기부금영수증은 확인 후 발급해 드리겠습니다.
+            </p>
+            <button
+              onClick={() => window.location.reload()}
+              style={{
+                background: "var(--red)",
+                color: "#fff",
+                padding: "12px 24px",
+                borderRadius: 999,
+                fontWeight: 800,
+                fontSize: 15,
+                border: 0,
+                cursor: "pointer",
+                fontFamily: "inherit",
+                boxShadow: "0 6px 18px rgba(228,3,46,0.28)",
+              }}
+            >
+              추가 입력하기
+            </button>
+          </div>
+        </main>
+        <SampleFooter />
       </div>
     );
   }
 
+  const legendStyle: React.CSSProperties = {
+    display: "flex",
+    alignItems: "center",
+    marginBottom: 10,
+    fontSize: 15,
+    fontWeight: 800,
+    color: "var(--navy)",
+  };
+
   return (
-    <div style={{ fontFamily: "'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif" }}>
-      <Navbar activePage="후원" />
-      <div className="min-h-screen bg-sky-50 pb-20">
-      {/* Header */}
-      <header className="bg-gradient-to-br from-sky-200 via-sky-300 to-sky-400 px-5 py-16 text-center">
-        <h1 className="mb-3 text-4xl font-black text-sky-900 md:text-5xl">
-          후원금 입금정보 입력
-        </h1>
-        <p className="mb-2 text-xl font-bold text-sky-800 md:text-2xl">
-          이승효 후보 후원 기부금영수증 발급 안내
-        </p>
-        <p className="text-sm text-sky-700 md:text-base">
-          기부금영수증 발급을 위해 아래 정보를 정확히 입력해주세요.
-        </p>
-      </header>
+    <div className="pl-page" style={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}>
+      <SampleNavbar activePage="후원" />
+      <section style={{ padding: "56px 22px 32px" }}>
+        <div style={{ maxWidth: 720, margin: "0 auto" }}>
+          <span
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 10,
+              fontFamily: "var(--font-archivo), system-ui, sans-serif",
+              fontWeight: 800,
+              fontSize: 12,
+              letterSpacing: 2,
+              color: "var(--red)",
+              textTransform: "uppercase",
+              marginBottom: 12,
+            }}
+          >
+            <span aria-hidden style={{ width: 34, height: 3, background: "var(--red)", display: "inline-block" }} />
+            Donate · 후원금 입금정보
+          </span>
+          <h1
+            style={{
+              fontFamily: "var(--font-black-han-sans), 'Noto Sans KR', sans-serif",
+              fontSize: "clamp(32px, 6vw, 52px)",
+              color: "var(--navy)",
+              margin: "0 0 12px",
+              fontWeight: 400,
+              letterSpacing: -0.5,
+              lineHeight: 1.05,
+            }}
+          >
+            이승효 후보 후원,
+            <br />
+            <span style={{ color: "var(--red)" }}>기부금영수증</span> 발급 안내
+          </h1>
+          <p style={{ color: "var(--ink-soft)", fontSize: 15.5, lineHeight: 1.75, maxWidth: 560 }}>
+            기부금영수증 발급을 위해 아래 정보를 정확히 입력해주세요. 수집된 개인정보는 영수증
+            발급 목적으로만 사용되며 안전하게 관리됩니다.
+          </p>
+        </div>
+      </section>
 
-      <form
-        onSubmit={handleSubmit}
-        className="mx-auto -mt-8 max-w-2xl rounded-2xl bg-white px-6 py-10 shadow-xl md:px-10"
-      >
-        {/* 1. 이름 */}
-        <fieldset className="mb-8">
-          <legend className="mb-3 flex items-center gap-2 text-lg font-bold text-sky-800">
-            <span className="flex h-7 w-7 items-center justify-center rounded-full bg-sky-500 text-sm font-black text-white">
-              1
-            </span>
-            이름
-            <span className="text-red-500">*</span>
-          </legend>
-          <input
-            type="text"
-            value={form.name}
-            onChange={(e) => setForm({ ...form, name: e.target.value })}
-            placeholder="홍길동"
-            className="w-full rounded-xl border-2 border-sky-200 px-4 py-3 text-sky-900 placeholder:text-sky-300 focus:border-sky-500 focus:outline-none"
-          />
-        </fieldset>
-
-        {/* 2. 주민등록번호 */}
-        <fieldset className="mb-8">
-          <legend className="mb-3 flex items-center gap-2 text-lg font-bold text-sky-800">
-            <span className="flex h-7 w-7 items-center justify-center rounded-full bg-sky-500 text-sm font-black text-white">
-              2
-            </span>
-            주민등록번호
-            <span className="text-red-500">*</span>
-          </legend>
-          <div className="flex items-center gap-3">
+      <section style={{ flex: 1, padding: "0 22px 60px" }}>
+        <form
+          onSubmit={handleSubmit}
+          style={{
+            maxWidth: 720,
+            margin: "0 auto",
+            background: "#fff",
+            borderRadius: 16,
+            padding: "32px",
+            boxShadow: "0 8px 28px rgba(21,35,63,0.08)",
+            border: "1px solid rgba(21,35,63,0.06)",
+            display: "flex",
+            flexDirection: "column",
+            gap: 24,
+          }}
+        >
+          <fieldset style={{ border: 0, padding: 0, margin: 0 }}>
+            <legend style={legendStyle}>
+              <StepBadge n={1} /> 이름 <span style={{ color: "var(--red)", marginLeft: 4 }}>*</span>
+            </legend>
             <input
               type="text"
-              inputMode="numeric"
-              maxLength={6}
-              value={form.residentId1}
-              onChange={(e) => {
-                const v = e.target.value.replace(/\D/g, "").slice(0, 6);
-                setForm({ ...form, residentId1: v });
-              }}
-              placeholder="생년월일 6자리"
-              className="w-full rounded-xl border-2 border-sky-200 px-4 py-3 text-center text-sky-900 placeholder:text-sky-300 focus:border-sky-500 focus:outline-none"
+              value={form.name}
+              onChange={(e) => setForm({ ...form, name: e.target.value })}
+              placeholder="홍길동"
+              style={inputStyle}
             />
-            <span className="text-2xl font-bold text-sky-300">-</span>
+          </fieldset>
+
+          <fieldset style={{ border: 0, padding: 0, margin: 0 }}>
+            <legend style={legendStyle}>
+              <StepBadge n={2} /> 주민등록번호 <span style={{ color: "var(--red)", marginLeft: 4 }}>*</span>
+            </legend>
+            <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+              <input
+                type="text"
+                inputMode="numeric"
+                maxLength={6}
+                value={form.residentId1}
+                onChange={(e) =>
+                  setForm({ ...form, residentId1: e.target.value.replace(/\D/g, "").slice(0, 6) })
+                }
+                placeholder="생년월일 6자리"
+                style={{ ...inputStyle, textAlign: "center" }}
+              />
+              <span style={{ fontSize: 22, fontWeight: 800, color: "var(--ink-soft)" }}>-</span>
+              <input
+                type="password"
+                inputMode="numeric"
+                maxLength={7}
+                value={form.residentId2}
+                onChange={(e) =>
+                  setForm({ ...form, residentId2: e.target.value.replace(/\D/g, "").slice(0, 7) })
+                }
+                placeholder="뒷자리 7자리"
+                style={{ ...inputStyle, textAlign: "center" }}
+              />
+            </div>
+            <p style={{ marginTop: 6, fontSize: 12, color: "var(--ink-soft)" }}>
+              기부금영수증 발급을 위해 필요하며, 안전하게 보호됩니다.
+            </p>
+          </fieldset>
+
+          <fieldset style={{ border: 0, padding: 0, margin: 0 }}>
+            <legend style={legendStyle}>
+              <StepBadge n={3} /> 전화번호 <span style={{ color: "var(--red)", marginLeft: 4 }}>*</span>
+            </legend>
             <input
-              type="password"
-              inputMode="numeric"
-              maxLength={7}
-              value={form.residentId2}
-              onChange={(e) => {
-                const v = e.target.value.replace(/\D/g, "").slice(0, 7);
-                setForm({ ...form, residentId2: v });
-              }}
-              placeholder="뒷자리 7자리"
-              className="w-full rounded-xl border-2 border-sky-200 px-4 py-3 text-center text-sky-900 placeholder:text-sky-300 focus:border-sky-500 focus:outline-none"
+              type="tel"
+              value={form.phone}
+              onChange={(e) => setForm({ ...form, phone: formatPhone(e.target.value) })}
+              placeholder="010-1234-5678"
+              style={inputStyle}
             />
-          </div>
-          <p className="mt-2 text-xs text-sky-400">
-            기부금영수증 발급을 위해 필요하며, 안전하게 보호됩니다.
-          </p>
-        </fieldset>
+          </fieldset>
 
-        {/* 3. 전화번호 */}
-        <fieldset className="mb-8">
-          <legend className="mb-3 flex items-center gap-2 text-lg font-bold text-sky-800">
-            <span className="flex h-7 w-7 items-center justify-center rounded-full bg-sky-500 text-sm font-black text-white">
-              3
-            </span>
-            전화번호
-            <span className="text-red-500">*</span>
-          </legend>
-          <input
-            type="tel"
-            value={form.phone}
-            onChange={(e) => setForm({ ...form, phone: formatPhone(e.target.value) })}
-            placeholder="010-1234-5678"
-            className="w-full rounded-xl border-2 border-sky-200 px-4 py-3 text-sky-900 placeholder:text-sky-300 focus:border-sky-500 focus:outline-none"
-          />
-        </fieldset>
+          <fieldset style={{ border: 0, padding: 0, margin: 0 }}>
+            <legend style={legendStyle}>
+              <StepBadge n={4} /> 이메일{" "}
+              <span style={{ fontSize: 12, fontWeight: 500, color: "var(--ink-soft)", marginLeft: 4 }}>
+                (선택)
+              </span>
+            </legend>
+            <input
+              type="email"
+              value={form.email}
+              onChange={(e) => setForm({ ...form, email: e.target.value })}
+              placeholder="example@email.com"
+              style={inputStyle}
+            />
+          </fieldset>
 
-        {/* 4. 이메일 */}
-        <fieldset className="mb-8">
-          <legend className="mb-3 flex items-center gap-2 text-lg font-bold text-sky-800">
-            <span className="flex h-7 w-7 items-center justify-center rounded-full bg-sky-500 text-sm font-black text-white">
-              4
-            </span>
-            이메일
-            <span className="ml-1 text-sm font-normal text-sky-400">(선택)</span>
-          </legend>
-          <input
-            type="email"
-            value={form.email}
-            onChange={(e) => setForm({ ...form, email: e.target.value })}
-            placeholder="example@email.com"
-            className="w-full rounded-xl border-2 border-sky-200 px-4 py-3 text-sky-900 placeholder:text-sky-300 focus:border-sky-500 focus:outline-none"
-          />
-        </fieldset>
-
-        {/* 5. 주소 */}
-        <fieldset className="mb-8">
-          <legend className="mb-3 flex items-center gap-2 text-lg font-bold text-sky-800">
-            <span className="flex h-7 w-7 items-center justify-center rounded-full bg-sky-500 text-sm font-black text-white">
-              5
-            </span>
-            주소
-            <span className="text-red-500">*</span>
-          </legend>
-
-          {/* 우편번호 검색 */}
-          <div className="mb-3">
+          <fieldset style={{ border: 0, padding: 0, margin: 0 }}>
+            <legend style={legendStyle}>
+              <StepBadge n={5} /> 주소 <span style={{ color: "var(--red)", marginLeft: 4 }}>*</span>
+            </legend>
             <button
               type="button"
               onClick={openDaumPostcode}
-              className="flex items-center gap-2 rounded-xl bg-sky-500 px-5 py-3 font-bold text-white transition hover:bg-sky-600"
+              style={{
+                background: "var(--navy)",
+                color: "#fff",
+                padding: "10px 18px",
+                borderRadius: 10,
+                fontWeight: 700,
+                fontSize: 14,
+                border: 0,
+                cursor: "pointer",
+                fontFamily: "inherit",
+                marginBottom: 10,
+              }}
             >
-              <Search className="h-4 w-4" />
-              주소 검색
+              🔍 주소 검색
             </button>
-          </div>
-
-          {/* 우편번호 + 도로명주소 */}
-          <div className="mb-3 flex gap-2">
+            <div style={{ display: "flex", gap: 8, marginBottom: 10 }}>
+              <input
+                type="text"
+                inputMode="numeric"
+                value={form.postalCode}
+                onChange={(e) =>
+                  setForm({
+                    ...form,
+                    postalCode: e.target.value.replace(/\D/g, "").slice(0, 5),
+                  })
+                }
+                placeholder="우편번호"
+                maxLength={5}
+                style={{ ...inputStyle, width: 120, textAlign: "center", fontFamily: "var(--font-archivo), monospace" }}
+              />
+              <input
+                type="text"
+                value={form.address}
+                onChange={(e) => setForm({ ...form, address: e.target.value })}
+                placeholder="도로명 주소"
+                style={{ ...inputStyle, flex: 1 }}
+              />
+            </div>
             <input
               type="text"
-              inputMode="numeric"
-              value={form.postalCode}
-              onChange={(e) =>
-                setForm({
-                  ...form,
-                  postalCode: e.target.value.replace(/\D/g, "").slice(0, 5),
-                })
-              }
-              placeholder="우편번호"
-              maxLength={5}
-              className="w-28 rounded-xl border-2 border-sky-200 px-4 py-3 text-center font-mono text-sky-900 placeholder:text-sky-300 focus:border-sky-500 focus:outline-none"
+              value={form.detailAddress}
+              onChange={(e) => setForm({ ...form, detailAddress: e.target.value })}
+              placeholder="상세 주소 (동, 호수 등)"
+              style={inputStyle}
             />
+          </fieldset>
+
+          <fieldset style={{ border: 0, padding: 0, margin: 0 }}>
+            <legend style={legendStyle}>
+              <StepBadge n={6} /> 후원금 금액 <span style={{ color: "var(--red)", marginLeft: 4 }}>*</span>
+            </legend>
+            <div style={{ position: "relative" }}>
+              <input
+                type="text"
+                inputMode="numeric"
+                value={form.amount}
+                onChange={(e) => setForm({ ...form, amount: formatAmount(e.target.value) })}
+                placeholder="100,000"
+                style={{ ...inputStyle, paddingRight: 36 }}
+              />
+              <span
+                style={{
+                  position: "absolute",
+                  right: 14,
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  fontWeight: 800,
+                  color: "var(--ink-soft)",
+                }}
+              >
+                원
+              </span>
+            </div>
+          </fieldset>
+
+          <fieldset style={{ border: 0, padding: 0, margin: 0 }}>
+            <legend style={legendStyle}>
+              <StepBadge n={7} /> 후원금 입금일자 <span style={{ color: "var(--red)", marginLeft: 4 }}>*</span>
+            </legend>
             <input
-              type="text"
-              value={form.address}
-              onChange={(e) => setForm({ ...form, address: e.target.value })}
-              placeholder="도로명 주소"
-              className="flex-1 rounded-xl border-2 border-sky-200 px-4 py-3 text-sky-900 placeholder:text-sky-300 focus:border-sky-500 focus:outline-none"
+              type="date"
+              value={form.depositDate}
+              onChange={(e) => setForm({ ...form, depositDate: e.target.value })}
+              style={inputStyle}
             />
-          </div>
+          </fieldset>
 
-          {/* 상세 주소 */}
-          <input
-            type="text"
-            value={form.detailAddress}
-            onChange={(e) => setForm({ ...form, detailAddress: e.target.value })}
-            placeholder="상세 주소 (동, 호수 등)"
-            className="w-full rounded-xl border-2 border-sky-200 px-4 py-3 text-sky-900 placeholder:text-sky-300 focus:border-sky-500 focus:outline-none"
-          />
-        </fieldset>
-
-        {/* 6. 후원금 금액 */}
-        <fieldset className="mb-8">
-          <legend className="mb-3 flex items-center gap-2 text-lg font-bold text-sky-800">
-            <span className="flex h-7 w-7 items-center justify-center rounded-full bg-sky-500 text-sm font-black text-white">
-              6
-            </span>
-            후원금 금액
-            <span className="text-red-500">*</span>
-          </legend>
-          <div className="relative">
-            <input
-              type="text"
-              inputMode="numeric"
-              value={form.amount}
-              onChange={(e) => setForm({ ...form, amount: formatAmount(e.target.value) })}
-              placeholder="100,000"
-              className="w-full rounded-xl border-2 border-sky-200 px-4 py-3 pr-10 text-sky-900 placeholder:text-sky-300 focus:border-sky-500 focus:outline-none"
-            />
-            <span className="absolute right-4 top-1/2 -translate-y-1/2 font-bold text-sky-400">
-              원
-            </span>
-          </div>
-        </fieldset>
-
-        {/* 7. 입금일자 */}
-        <fieldset className="mb-8">
-          <legend className="mb-3 flex items-center gap-2 text-lg font-bold text-sky-800">
-            <span className="flex h-7 w-7 items-center justify-center rounded-full bg-sky-500 text-sm font-black text-white">
-              7
-            </span>
-            후원금 입금일자
-            <span className="text-red-500">*</span>
-          </legend>
-          <input
-            type="date"
-            value={form.depositDate}
-            onChange={(e) => setForm({ ...form, depositDate: e.target.value })}
-            className="w-full rounded-xl border-2 border-sky-200 px-4 py-3 text-sky-900 focus:border-sky-500 focus:outline-none"
-          />
-        </fieldset>
-
-        {/* Error */}
-        {error && (
-          <div className="mb-6 flex items-center gap-2 rounded-xl bg-red-50 px-4 py-3 text-sm text-red-600">
-            <AlertTriangle className="h-4 w-4 shrink-0" />
-            {error}
-          </div>
-        )}
-
-        {/* Submit */}
-        <button
-          type="submit"
-          disabled={submitting}
-          className="flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-sky-500 to-sky-600 py-4 text-lg font-bold text-white shadow-lg shadow-sky-500/30 transition hover:-translate-y-0.5 hover:shadow-xl disabled:opacity-50 disabled:hover:translate-y-0"
-        >
-          {submitting ? (
-            "제출 중..."
-          ) : (
-            <>
-              <Heart className="h-5 w-5" />
-              후원정보 제출하기
-            </>
+          {error && (
+            <div
+              style={{
+                background: "rgba(228,3,46,0.08)",
+                border: "1px solid rgba(228,3,46,0.2)",
+                color: "var(--red-deep)",
+                padding: "10px 14px",
+                borderRadius: 10,
+                fontSize: 13.5,
+                fontWeight: 600,
+              }}
+            >
+              ⚠ {error}
+            </div>
           )}
-        </button>
 
-        <p className="mt-4 text-center text-xs text-sky-400">
-          수집된 개인정보는 기부금영수증 발급 목적으로만 사용되며, 관련 법령에
-          따라 안전하게 관리됩니다.
-        </p>
-      </form>
-    </div>
+          <button
+            type="submit"
+            disabled={submitting}
+            style={{
+              background: submitting ? "rgba(228,3,46,0.4)" : "var(--red)",
+              color: "#fff",
+              padding: "16px 22px",
+              borderRadius: 12,
+              fontWeight: 800,
+              fontSize: 16,
+              border: 0,
+              cursor: submitting ? "not-allowed" : "pointer",
+              fontFamily: "inherit",
+              boxShadow: "0 8px 22px rgba(228,3,46,0.28)",
+            }}
+          >
+            {submitting ? "제출 중..." : "♥ 후원정보 제출하기"}
+          </button>
+
+          <p style={{ textAlign: "center", fontSize: 12, color: "var(--ink-soft)" }}>
+            수집된 개인정보는 기부금영수증 발급 목적으로만 사용되며, 관련 법령에 따라 안전하게
+            관리됩니다.
+          </p>
+        </form>
+      </section>
+
+      <SampleFooter />
     </div>
   );
 }

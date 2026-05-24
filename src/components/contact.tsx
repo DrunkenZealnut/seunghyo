@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { supabase } from "@/lib/supabase";
-import { Send } from "lucide-react";
 import CheerList from "./cheer-list";
 
 export default function Contact() {
@@ -37,13 +36,51 @@ export default function Contact() {
     setRefreshKey((k) => k + 1);
   }
 
+  const inputStyle: React.CSSProperties = {
+    width: "100%",
+    border: "1.5px solid rgba(21,35,63,0.16)",
+    borderRadius: 10,
+    padding: "12px 14px",
+    fontSize: 15,
+    color: "var(--ink)",
+    background: "#fff",
+    fontFamily: "inherit",
+    outline: "none",
+    transition: "border-color .18s",
+  };
+
   return (
-    <section className="bg-white px-5 py-20 text-center">
-      <h2 className="mb-10 text-3xl font-black text-sky-800 after:mx-auto after:mt-3 after:block after:h-1 after:w-15 after:rounded-full after:bg-sky-500">
+    <section style={{ textAlign: "center" }}>
+      <span
+        style={{
+          display: "inline-flex",
+          alignItems: "center",
+          gap: 10,
+          fontFamily: "var(--font-archivo), system-ui, sans-serif",
+          fontWeight: 800,
+          fontSize: 12,
+          letterSpacing: 2,
+          color: "var(--red)",
+          textTransform: "uppercase",
+          marginBottom: 12,
+        }}
+      >
+        <span aria-hidden style={{ width: 34, height: 3, background: "var(--red)", display: "inline-block" }} />
+        Cheers · 응원 메시지
+      </span>
+      <h2
+        style={{
+          fontFamily: "var(--font-black-han-sans), 'Noto Sans KR', sans-serif",
+          fontSize: "clamp(26px, 5vw, 38px)",
+          color: "var(--navy)",
+          margin: "0 0 14px",
+          fontWeight: 400,
+          letterSpacing: -0.3,
+        }}
+      >
         이승효에게 응원 보내기
       </h2>
-
-      <p className="mx-auto mb-10 max-w-lg text-lg leading-loose text-sky-700/80">
+      <p style={{ color: "var(--ink-soft)", fontSize: 15.5, lineHeight: 1.75, maxWidth: 560, margin: "0 auto 28px" }}>
         동대문의 변화는 주민 여러분의 관심과 참여에서 시작됩니다.
         <br />
         따뜻한 한마디가 큰 힘이 됩니다.
@@ -51,38 +88,50 @@ export default function Contact() {
 
       <form
         onSubmit={handleSubmit}
-        className="mx-auto max-w-md space-y-4"
+        style={{
+          maxWidth: 480,
+          margin: "0 auto",
+          display: "flex",
+          flexDirection: "column",
+          gap: 12,
+          textAlign: "left",
+        }}
       >
         <input
           type="text"
           value={name}
           onChange={(e) => setName(e.target.value)}
           placeholder="이름 (선택사항)"
-          className="w-full rounded-xl border-2 border-sky-200 px-4 py-3 text-sky-900 placeholder:text-sky-300 focus:border-sky-500 focus:outline-none"
+          style={inputStyle}
         />
         <textarea
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           placeholder="응원 메시지를 남겨주세요"
           rows={3}
-          className="w-full resize-none rounded-xl border-2 border-sky-200 px-4 py-3 text-sky-900 placeholder:text-sky-300 focus:border-sky-500 focus:outline-none"
+          style={{ ...inputStyle, resize: "none" }}
         />
-
-        {error && <p className="text-sm text-red-500">{error}</p>}
-
+        {error && (
+          <p style={{ color: "var(--red)", fontSize: 13, margin: 0 }}>{error}</p>
+        )}
         <button
           type="submit"
           disabled={submitting || !message.trim()}
-          className="flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-sky-500 to-sky-600 py-4 text-lg font-bold text-white shadow-lg shadow-sky-500/30 transition hover:-translate-y-0.5 hover:shadow-xl disabled:opacity-50 disabled:hover:translate-y-0"
+          style={{
+            background: submitting || !message.trim() ? "rgba(228,3,46,0.4)" : "var(--red)",
+            color: "#fff",
+            padding: "14px 22px",
+            borderRadius: 999,
+            fontWeight: 800,
+            fontSize: 15,
+            border: 0,
+            cursor: submitting || !message.trim() ? "not-allowed" : "pointer",
+            fontFamily: "inherit",
+            boxShadow: "0 6px 18px rgba(228,3,46,0.28)",
+            transition: "transform .18s",
+          }}
         >
-          {submitting ? (
-            "보내는 중..."
-          ) : (
-            <>
-              <Send className="h-5 w-5" />
-              응원 보내기
-            </>
-          )}
+          {submitting ? "보내는 중..." : "응원 보내기 →"}
         </button>
       </form>
 

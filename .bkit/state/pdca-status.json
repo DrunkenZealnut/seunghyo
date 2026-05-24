@@ -1,11 +1,52 @@
 {
   "version": "2.0",
-  "lastUpdated": "2026-04-13T02:40:31.644Z",
+  "lastUpdated": "2026-05-24T02:43:04.720Z",
   "activeFeatures": [
-    "seunghyo"
+    "site-renewal",
+    "seunghyo",
+    "login",
+    "data",
+    "cheers",
+    "opinions",
+    "donations",
+    "admin",
+    "donate",
+    "notify",
+    "about",
+    "pledges",
+    "news",
+    "site-renewal Gap analysis"
   ],
-  "primaryFeature": "seunghyo",
+  "primaryFeature": "site-renewal",
   "features": {
+    "site-renewal": {
+      "phase": "check",
+      "phaseNumber": 4,
+      "matchRate": 97,
+      "iterationCount": 1,
+      "requirements": [
+        "FR-01: PLEDGES 9개 + 34개 세부정책 데이터화",
+        "FR-02: 메인 히어로 진보당 뱃지/기호 5 nameplate",
+        "FR-03: /pledges sticky 사이드 인덱스 + 9 카드",
+        "FR-04: 카드 시각 토큰 sample 충실 재현",
+        "FR-05: /about bio chip 패턴",
+        "FR-06: 디자인 시스템 일관성",
+        "FR-07: 모바일 820px 미만 레이아웃",
+        "FR-08: 메타데이터 카피 통일",
+        "FR-09: 9번째 약속(공공 인프라) 카드 신규",
+        "FR-10: 응원 폼 새 토큰 적용"
+      ],
+      "documents": {
+        "plan": "docs/01-plan/features/site-renewal.plan.md",
+        "design": "docs/02-design/features/site-renewal.design.md",
+        "analysis": "docs/03-analysis/site-renewal.analysis.md"
+      },
+      "timestamps": {
+        "started": "2026-05-24T00:00:00.000Z",
+        "lastUpdated": "2026-05-24T11:30:00.000Z"
+      },
+      "lastFile": "docs/03-analysis/site-renewal.analysis.md"
+    },
     "seunghyo": {
       "phase": "do",
       "phaseNumber": 3,
@@ -15,9 +56,166 @@
       "documents": {},
       "timestamps": {
         "started": "2026-04-13T02:38:37.026Z",
-        "lastUpdated": "2026-04-13T02:40:31.644Z"
+        "lastUpdated": "2026-05-24T02:39:20.030Z"
       },
-      "lastFile": "/Users/zealnutkim/Documents/DEV/Election2026/seunghyo/src/app/storage.ts"
+      "lastFile": "/Users/zealnutkim/DEV/Election2026/seunghyo/src/app/SeunghyoApp.tsx"
+    },
+    "login": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-04-13T02:58:40.090Z",
+        "lastUpdated": "2026-04-13T02:59:32.394Z"
+      },
+      "lastFile": "/Users/zealnutkim/Documents/DEV/Election2026/seunghyo/src/app/admin/login/page.tsx"
+    },
+    "data": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-04-13T02:59:01.293Z",
+        "lastUpdated": "2026-05-24T01:39:52.201Z"
+      },
+      "lastFile": "/Users/zealnutkim/DEV/Election2026/seunghyo/src/data/site-data.ts"
+    },
+    "cheers": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-04-13T02:59:12.077Z",
+        "lastUpdated": "2026-04-13T03:00:04.944Z"
+      },
+      "lastFile": "/Users/zealnutkim/Documents/DEV/Election2026/seunghyo/src/app/admin/cheers/page.tsx"
+    },
+    "opinions": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-04-13T02:59:15.145Z",
+        "lastUpdated": "2026-05-24T02:43:02.841Z"
+      },
+      "lastFile": "/Users/zealnutkim/DEV/Election2026/seunghyo/src/app/opinions/page.tsx"
+    },
+    "donations": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-04-13T02:59:19.537Z",
+        "lastUpdated": "2026-04-13T03:01:36.015Z"
+      },
+      "lastFile": "/Users/zealnutkim/Documents/DEV/Election2026/seunghyo/src/app/admin/donations/page.tsx"
+    },
+    "admin": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-04-13T02:59:46.164Z",
+        "lastUpdated": "2026-05-24T02:12:19.585Z"
+      },
+      "lastFile": "/Users/zealnutkim/DEV/Election2026/seunghyo/src/app/admin/layout.tsx"
+    },
+    "donate": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-04-13T04:13:15.223Z",
+        "lastUpdated": "2026-05-24T02:43:04.720Z"
+      },
+      "lastFile": "/Users/zealnutkim/DEV/Election2026/seunghyo/src/app/donate/page.tsx"
+    },
+    "notify": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-04-13T04:59:06.573Z",
+        "lastUpdated": "2026-04-13T04:59:06.573Z"
+      },
+      "lastFile": "/Users/zealnutkim/Documents/DEV/Election2026/seunghyo/src/app/api/notify/route.ts"
+    },
+    "about": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-04-13T05:05:27.555Z",
+        "lastUpdated": "2026-05-24T02:34:19.698Z"
+      },
+      "lastFile": "/Users/zealnutkim/DEV/Election2026/seunghyo/src/app/about/page.tsx"
+    },
+    "pledges": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-04-13T05:05:35.223Z",
+        "lastUpdated": "2026-05-24T02:33:55.376Z"
+      },
+      "lastFile": "/Users/zealnutkim/DEV/Election2026/seunghyo/src/app/pledges/page.tsx"
+    },
+    "news": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-04-13T05:05:39.960Z",
+        "lastUpdated": "2026-05-24T02:34:26.217Z"
+      },
+      "lastFile": "/Users/zealnutkim/DEV/Election2026/seunghyo/src/app/news/page.tsx"
+    },
+    "site-renewal Gap analysis": {
+      "phase": "act",
+      "phaseNumber": 5,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-05-24T02:06:00.486Z",
+        "lastUpdated": "2026-05-24T02:06:00.486Z"
+      },
+      "previousPhase": "check",
+      "autoAdvanced": true
     }
   },
   "pipeline": {
@@ -28,7 +226,7 @@
   "session": {
     "startedAt": "2026-04-13T02:33:06.311Z",
     "onboardingCompleted": false,
-    "lastActivity": "2026-04-13T02:40:31.644Z"
+    "lastActivity": "2026-05-24T02:43:04.720Z"
   },
   "history": [
     {
@@ -76,6 +274,606 @@
     {
       "timestamp": "2026-04-13T02:40:31.644Z",
       "feature": "seunghyo",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-13T02:47:34.633Z",
+      "feature": "seunghyo",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-13T02:58:26.274Z",
+      "feature": "seunghyo",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-13T02:58:29.604Z",
+      "feature": "seunghyo",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-13T02:58:32.465Z",
+      "feature": "seunghyo",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-13T02:58:35.422Z",
+      "feature": "seunghyo",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-13T02:58:40.090Z",
+      "feature": "login",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-13T02:59:01.293Z",
+      "feature": "data",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-13T02:59:12.077Z",
+      "feature": "cheers",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-13T02:59:15.145Z",
+      "feature": "opinions",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-13T02:59:19.537Z",
+      "feature": "donations",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-13T02:59:32.394Z",
+      "feature": "login",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-13T02:59:46.164Z",
+      "feature": "admin",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-13T02:59:56.497Z",
+      "feature": "admin",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-13T03:00:04.944Z",
+      "feature": "cheers",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-13T03:00:12.526Z",
+      "feature": "opinions",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-13T03:01:36.015Z",
+      "feature": "donations",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-13T03:01:43.920Z",
+      "feature": "seunghyo",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-13T03:02:00.487Z",
+      "feature": "seunghyo",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-13T04:13:15.223Z",
+      "feature": "donate",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-13T04:13:16.291Z",
+      "feature": "donate",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-13T04:13:38.461Z",
+      "feature": "opinions",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-13T04:13:39.483Z",
+      "feature": "opinions",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-13T04:13:50.643Z",
+      "feature": "seunghyo",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-13T04:14:01.713Z",
+      "feature": "seunghyo",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-13T04:54:18.926Z",
+      "feature": "seunghyo",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-13T04:55:41.078Z",
+      "feature": "seunghyo",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-13T04:55:46.249Z",
+      "feature": "donate",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-13T04:55:47.597Z",
+      "feature": "opinions",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-13T04:55:52.016Z",
+      "feature": "donate",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-13T04:55:53.810Z",
+      "feature": "opinions",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-13T04:56:08.478Z",
+      "feature": "donate",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-13T04:56:36.657Z",
+      "feature": "donate",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-13T04:56:55.016Z",
+      "feature": "opinions",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-13T04:57:20.329Z",
+      "feature": "opinions",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-13T04:59:06.573Z",
+      "feature": "notify",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-13T04:59:13.906Z",
+      "feature": "donate",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-13T05:05:03.580Z",
+      "feature": "data",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-13T05:05:27.555Z",
+      "feature": "about",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-13T05:05:35.223Z",
+      "feature": "pledges",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-13T05:05:39.960Z",
+      "feature": "news",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-13T05:05:48.689Z",
+      "feature": "seunghyo",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-13T05:05:54.340Z",
+      "feature": "seunghyo",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-24T10:30:00.000Z",
+      "feature": "site-renewal",
+      "phase": "design",
+      "action": "created"
+    },
+    {
+      "timestamp": "2026-05-24T01:39:52.203Z",
+      "feature": "data",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-24T01:40:08.068Z",
+      "feature": "seunghyo",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-24T01:43:47.501Z",
+      "feature": "seunghyo",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-24T01:43:56.396Z",
+      "feature": "seunghyo",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-24T01:44:06.856Z",
+      "feature": "seunghyo",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-24T01:44:12.179Z",
+      "feature": "seunghyo",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-24T01:44:59.752Z",
+      "feature": "seunghyo",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-24T01:45:05.395Z",
+      "feature": "seunghyo",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-24T01:45:11.137Z",
+      "feature": "seunghyo",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-24T01:45:35.975Z",
+      "feature": "seunghyo",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-24T01:45:46.849Z",
+      "feature": "seunghyo",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-24T01:46:02.153Z",
+      "feature": "seunghyo",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-24T01:46:17.217Z",
+      "feature": "seunghyo",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-24T01:46:23.017Z",
+      "feature": "seunghyo",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-24T01:46:36.237Z",
+      "feature": "seunghyo",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-24T01:47:48.727Z",
+      "feature": "pledges",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-24T01:47:55.301Z",
+      "feature": "about",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-24T01:48:05.741Z",
+      "feature": "news",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-24T01:48:22.650Z",
+      "feature": "seunghyo",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-24T01:48:58.806Z",
+      "feature": "seunghyo",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-24T01:49:13.171Z",
+      "feature": "seunghyo",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-24T01:49:31.301Z",
+      "feature": "seunghyo",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-24T01:49:34.266Z",
+      "feature": "seunghyo",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-24T02:06:00.486Z",
+      "feature": "site-renewal Gap analysis",
+      "phase": "act",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-24T02:10:40.130Z",
+      "feature": "opinions",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-24T02:11:37.756Z",
+      "feature": "donate",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-24T02:11:50.742Z",
+      "feature": "seunghyo",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-24T02:11:51.504Z",
+      "feature": "seunghyo",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-24T02:11:53.060Z",
+      "feature": "seunghyo",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-24T02:11:54.618Z",
+      "feature": "seunghyo",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-24T02:11:55.943Z",
+      "feature": "pledges",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-24T02:12:09.015Z",
+      "feature": "pledges",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-24T02:12:14.195Z",
+      "feature": "about",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-24T02:12:17.801Z",
+      "feature": "news",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-24T02:12:19.585Z",
+      "feature": "admin",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-24T02:21:46.108Z",
+      "feature": "seunghyo",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-24T02:21:49.862Z",
+      "feature": "seunghyo",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-24T02:24:37.588Z",
+      "feature": "seunghyo",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-24T02:24:42.283Z",
+      "feature": "seunghyo",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-24T02:24:44.903Z",
+      "feature": "seunghyo",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-24T02:31:05.472Z",
+      "feature": "seunghyo",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-24T02:31:10.849Z",
+      "feature": "seunghyo",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-24T02:31:52.453Z",
+      "feature": "seunghyo",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-24T02:33:50.078Z",
+      "feature": "seunghyo",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-24T02:33:55.376Z",
+      "feature": "pledges",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-24T02:34:19.698Z",
+      "feature": "about",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-24T02:34:26.217Z",
+      "feature": "news",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-24T02:34:42.471Z",
+      "feature": "opinions",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-24T02:34:52.261Z",
+      "feature": "donate",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-24T02:35:05.489Z",
+      "feature": "opinions",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-24T02:35:07.608Z",
+      "feature": "donate",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-24T02:35:23.755Z",
+      "feature": "seunghyo",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-24T02:35:29.287Z",
+      "feature": "seunghyo",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-24T02:39:16.865Z",
+      "feature": "seunghyo",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-24T02:39:20.030Z",
+      "feature": "seunghyo",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-24T02:43:02.841Z",
+      "feature": "opinions",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-24T02:43:04.720Z",
+      "feature": "donate",
       "phase": "do",
       "action": "updated"
     }

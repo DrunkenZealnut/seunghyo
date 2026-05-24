@@ -1,59 +1,106 @@
-"use client";
+import type { Metadata } from "next";
+import SampleNavbar from "@/components/sample-navbar";
+import SampleFooter from "@/components/sample-footer";
 
-import Navbar from "@/components/navbar";
-import { CAREERS } from "@/data/site-data";
-import { SITTING_IMG } from "@/data/sitting-image";
+export const metadata: Metadata = {
+  title: "후보 소개 - 이승효",
+  description: "민주노총 서비스연맹 정책국장, 진보당 동대문 민생위원장. 현장에서 일해 온 이승효 후보 소개.",
+};
 
 export default function AboutPage() {
   return (
-    <div style={{ fontFamily: "'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif", background: "#F5F7FF", minHeight: "100vh", color: "#0A0F2C" }}>
-      <Navbar activePage="소개" />
-      <main style={{ maxWidth: 800, margin: "0 auto", padding: "0 16px 80px" }}>
-        <div style={{ padding: "32px 0 16px" }}>
-          <h1 style={{ fontSize: 28, fontWeight: 900, color: "#29ABE2", margin: 0 }}>후보 소개</h1>
-        </div>
+    <div className="pl-page">
+      <div className="wrap">
+        <SampleNavbar activePage="소개" />
 
-        <div className="card" style={{ background: "#fff", borderRadius: 20, padding: 28, boxShadow: "0 4px 24px rgba(0,87,255,0.08)", marginBottom: 20, display: "flex", gap: 24, alignItems: "flex-start", flexWrap: "wrap" }}>
-          <img src={SITTING_IMG} alt="이승효" style={{ width: 140, borderRadius: 16, objectFit: "cover", flexShrink: 0 }} />
-          <div style={{ flex: 1, minWidth: 200 }}>
-            <h2 style={{ fontSize: 28, fontWeight: 900, margin: "0 0 8px" }}>이승효</h2>
-            <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 16 }}>
-              <span style={{ display: "inline-block", background: "#EEF9FF", color: "#1A8FCC", borderRadius: 20, padding: "4px 12px", fontSize: 12, fontWeight: 700 }}>진보당</span>
-              <span style={{ display: "inline-block", background: "#EEF9FF", color: "#1A8FCC", borderRadius: 20, padding: "4px 12px", fontSize: 12, fontWeight: 700 }}>동대문 제2선거구</span>
-              <span style={{ display: "inline-block", background: "#EEF9FF", color: "#1A8FCC", borderRadius: 20, padding: "4px 12px", fontSize: 12, fontWeight: 700 }}>회기·휘경·이문</span>
-            </div>
-            <p style={{ color: "#444", lineHeight: 1.7, fontSize: 15 }}>
-              광주에서 태어나 동국대를 졸업하고, 청년 시절부터 학생운동·급식법 개정운동을 이끌어온 현장 활동가입니다. 지금은 민주노총 서비스연맹 정책국장으로 노동자의 목소리를 제도로 만드는 일을 하고 있습니다.
-            </p>
+        <section className="hero">
+          <span className="kicker">About · 후보 소개</span>
+          <h1>
+            현장에서 일해 온 사람,
+            <br />
+            <span className="hl">이승효</span>
+          </h1>
+          <p className="sub">
+            광주에서 태어나 동국대를 졸업하고, 청년 시절부터 학생운동·학교급식법 개정운동을
+            이끌어온 현장 활동가입니다. 지금은 민주노총 서비스연맹 정책국장으로 노동자의 목소리를
+            제도로 만드는 일을 하고 있습니다.
+          </p>
+          <div className="meta">
+            <span className="tag fill">진보당 기호 5번</span>
+            <span className="tag">동대문 제2선거구</span>
+          </div>
+        </section>
+
+        <div className="layout" style={{ gridTemplateColumns: "1fr", paddingTop: 8 }}>
+          <div className="promises">
+            <article className="card show">
+              <div className="head">
+                <div className="num">01</div>
+                <div className="htext">
+                  <div className="em">Education · 학력</div>
+                  <h2>학력</h2>
+                </div>
+              </div>
+              <ul>
+                <li>광주 고려고등학교 졸업</li>
+                <li>동국대학교 국어교육과 졸업</li>
+              </ul>
+            </article>
+
+            <article className="card show">
+              <div className="head">
+                <div className="num">02</div>
+                <div className="htext">
+                  <div className="em">Previous · 전</div>
+                  <h2>이전 활동</h2>
+                </div>
+              </div>
+              <ul>
+                <li>동국대학교 총학생회 부총학생회장</li>
+                <li>학교급식법 개정 100만 청원운동본부 언론홍보팀 총괄</li>
+              </ul>
+            </article>
+
+            <article className="card accent show">
+              <div className="head">
+                <div className="num">03</div>
+                <div className="htext">
+                  <div className="em">Current · 현</div>
+                  <h2>현재 활동</h2>
+                </div>
+              </div>
+              <ul>
+                <li>
+                  <b>진보당 달빛어린이병원</b> 추진 공동운동본부장
+                </li>
+                <li>진보당 동대문지역위 민생위원장</li>
+                <li>민주노총 서비스연맹 정책국장</li>
+              </ul>
+            </article>
           </div>
         </div>
 
-        <div style={{ background: "#fff", borderRadius: 20, padding: 28, boxShadow: "0 4px 24px rgba(0,87,255,0.08)", marginBottom: 20 }}>
-          <h3 style={{ fontWeight: 800, fontSize: 18, marginBottom: 16, color: "#29ABE2" }}>약력</h3>
-          {CAREERS.map((c, i) => (
-            <div key={i} style={{ display: "flex", gap: 12, padding: "10px 0", borderBottom: i < CAREERS.length - 1 ? "1px solid #f0f0f0" : "none" }}>
-              <span style={{ color: "#29ABE2", fontWeight: 700, fontSize: 13, minWidth: 30 }}>{c.period}</span>
-              <span style={{ fontSize: 15, color: "#0A0F2C" }}>{c.label}</span>
-            </div>
-          ))}
-          <div style={{ padding: "10px 0", borderTop: "1px solid #f0f0f0", marginTop: 4 }}>
-            <div style={{ display: "flex", gap: 12 }}>
-              <span style={{ color: "#888", fontWeight: 700, fontSize: 13, minWidth: 30 }}>학력</span>
-              <span style={{ fontSize: 15, color: "#0A0F2C" }}>동국대학교 사범대학 졸업 / 광주 고려고등학교 졸업</span>
+        <section className="cta">
+          <div className="cta-inner">
+            <h3>
+              오직 주민편,
+              <br />
+              새로운 선택 이승효.
+            </h3>
+            <p>회기동 · 휘경1·2동 · 이문1·2동 주민과 함께 만들어가겠습니다.</p>
+            <div className="btns">
+              <a className="btn primary" href="/opinions">
+                의견 보내기
+              </a>
+              <a className="btn ghost" href="/donate">
+                후원하기
+              </a>
             </div>
           </div>
-        </div>
+        </section>
 
-        <div style={{ background: "linear-gradient(135deg,#1A8FCC,#29ABE2)", color: "#fff", textAlign: "center", borderRadius: 20, padding: 28, boxShadow: "0 4px 24px rgba(0,87,255,0.08)" }}>
-          <div style={{ fontSize: 22, fontWeight: 900, marginBottom: 8, color: "#FFE066" }}>오직 주민편!</div>
-          <div style={{ fontSize: 28, fontWeight: 900 }}>새로운 선택 이승효</div>
-          <div style={{ marginTop: 12, opacity: 0.85, fontSize: 15 }}>회기동 · 휘경1·2동 · 이문1·2동 주민과 함께 만들어가겠습니다</div>
-        </div>
-      </main>
-
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
-      `}</style>
+        <SampleFooter />
+      </div>
     </div>
   );
 }
