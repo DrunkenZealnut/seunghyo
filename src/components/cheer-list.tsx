@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase";
-import { Heart } from "lucide-react";
 
 interface Cheer {
   id: string;
@@ -51,7 +50,7 @@ export default function CheerList({ refreshKey }: { refreshKey: number }) {
 
   if (loading && cheers.length === 0) {
     return (
-      <div className="mt-10 text-center text-sm text-sky-400">
+      <div style={{ marginTop: 32, textAlign: "center", color: "var(--ink-soft)", fontSize: 13 }}>
         응원 메시지를 불러오는 중...
       </div>
     );
@@ -60,25 +59,49 @@ export default function CheerList({ refreshKey }: { refreshKey: number }) {
   if (cheers.length === 0) return null;
 
   return (
-    <div className="mt-12">
-      <div className="mb-6 flex items-center justify-center gap-2 text-sky-600">
-        <Heart className="h-5 w-5 text-pink-500" fill="currentColor" />
-        <span className="font-bold">총 {total}명이 응원하고 있습니다</span>
+    <div style={{ marginTop: 36 }}>
+      <div
+        style={{
+          marginBottom: 18,
+          textAlign: "center",
+          fontWeight: 800,
+          color: "var(--navy)",
+          fontSize: 14,
+        }}
+      >
+        <span style={{ color: "var(--red)" }}>♥</span>{" "}
+        총 {total}명이 응원하고 있습니다
       </div>
 
-      <div className="mx-auto max-w-md space-y-3">
+      <div style={{ maxWidth: 480, margin: "0 auto", display: "flex", flexDirection: "column", gap: 10 }}>
         {cheers.map((cheer) => (
           <div
             key={cheer.id}
-            className="rounded-xl border border-sky-100 bg-sky-50/50 px-5 py-4"
+            style={{
+              background: "#fff",
+              border: "1px solid rgba(21,35,63,0.08)",
+              borderRadius: 12,
+              padding: "14px 18px",
+              textAlign: "left",
+              boxShadow: "0 2px 8px rgba(21,35,63,0.04)",
+            }}
           >
-            <div className="mb-1 flex items-center justify-between text-xs text-sky-400">
-              <span className="font-medium text-sky-600">
+            <div
+              style={{
+                marginBottom: 4,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                fontSize: 12,
+                color: "var(--ink-soft)",
+              }}
+            >
+              <span style={{ fontWeight: 700, color: "var(--navy)" }}>
                 {cheer.name || "익명의 주민"}
               </span>
               <span>{timeAgo(cheer.created_at)}</span>
             </div>
-            <p className="text-sm leading-relaxed text-sky-800">
+            <p style={{ fontSize: 14.5, lineHeight: 1.6, color: "var(--ink)", margin: 0 }}>
               {cheer.message}
             </p>
           </div>
@@ -86,10 +109,20 @@ export default function CheerList({ refreshKey }: { refreshKey: number }) {
       </div>
 
       {hasMore && (
-        <div className="mt-6 text-center">
+        <div style={{ marginTop: 24, textAlign: "center" }}>
           <button
             onClick={() => load(true)}
-            className="rounded-full border-2 border-sky-200 px-6 py-2 text-sm font-medium text-sky-600 transition hover:bg-sky-50"
+            style={{
+              background: "transparent",
+              border: "1.5px solid rgba(21,35,63,0.18)",
+              color: "var(--navy)",
+              padding: "10px 22px",
+              borderRadius: 999,
+              fontSize: 14,
+              fontWeight: 700,
+              cursor: "pointer",
+              fontFamily: "inherit",
+            }}
           >
             더 보기
           </button>

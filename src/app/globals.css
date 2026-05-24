@@ -1,6 +1,22 @@
 @import "tailwindcss";
+@import "./sample.css";
 
 :root {
+  /* === site-renewal design tokens (sample/gongyak.html 동일) === */
+  --red: #E4032E;
+  --red-deep: #B30021;
+  --sky: #BFE0F4;
+  --sky-soft: #DCEFFB;
+  --sky-deep: #5BA7DC;
+  --navy: #15233F;
+  --navy-soft: #33476e;
+  --indigo: #221D7A;
+  --ink: #15233F;
+  --ink-soft: #33476e;
+  --paper: #F2F8FE;
+  --paper-2: #E6F2FB;
+
+  /* legacy (admin 페이지가 참조) */
   --background: #ffffff;
   --foreground: #171717;
 }
@@ -8,19 +24,36 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --color-red: var(--red);
+  --color-navy: var(--navy);
+  --color-paper: var(--paper);
+  --font-sans: var(--font-noto-kr);
   --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-black-han-sans);
+  --font-numeric: var(--font-archivo);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+html { scroll-behavior: smooth; }
 
 body {
-  background: var(--background);
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-noto-kr), "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* admin 영역은 기존 sky 톤 유지 — paper 배경 override */
+.admin-scope {
+  background: #ffffff;
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+@keyframes seunghyo-rise {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes seunghyo-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }

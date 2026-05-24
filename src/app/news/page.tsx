@@ -1,28 +1,50 @@
-"use client";
-
-import Navbar from "@/components/navbar";
+import type { Metadata } from "next";
+import SampleNavbar from "@/components/sample-navbar";
+import SampleFooter from "@/components/sample-footer";
 import { INITIAL_NEWS } from "@/data/site-data";
+
+export const metadata: Metadata = {
+  title: "활동 소식 - 이승효",
+  description: "이승효 후보의 캠페인 활동·공약 발표·서명운동 등 현장 소식.",
+};
 
 export default function NewsPage() {
   return (
-    <div style={{ fontFamily: "'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif", background: "#F5F7FF", minHeight: "100vh", color: "#0A0F2C" }}>
-      <Navbar activePage="소식" />
-      <main style={{ maxWidth: 800, margin: "0 auto", padding: "0 16px 80px" }}>
-        <div style={{ padding: "32px 0 16px" }}>
-          <h1 style={{ fontSize: 28, fontWeight: 900, color: "#29ABE2", margin: 0 }}>활동 소식</h1>
-        </div>
-        {INITIAL_NEWS.map(n => (
-          <div key={n.id} style={{ background: "#fff", borderRadius: 20, padding: 28, boxShadow: "0 4px 24px rgba(0,87,255,0.08)", marginBottom: 16 }}>
-            <div style={{ color: "#29ABE2", fontSize: 13, fontWeight: 700, marginBottom: 6 }}>{n.date}</div>
-            <h3 style={{ margin: "0 0 10px", fontSize: 18, fontWeight: 800 }}>{n.title}</h3>
-            <p style={{ color: "#555", lineHeight: 1.7, margin: 0, fontSize: 15 }}>{n.body}</p>
-          </div>
-        ))}
-      </main>
+    <div className="pl-page">
+      <div className="wrap">
+        <SampleNavbar activePage="소식" />
 
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
-      `}</style>
+        <section className="hero">
+          <span className="kicker">News · 활동 소식</span>
+          <h1>
+            현장에서 전하는
+            <br />
+            <span className="hl">소식</span>
+          </h1>
+          <p className="sub">이승효 후보의 캠페인 활동·공약 발표·서명운동 등 현장 소식을 전합니다.</p>
+        </section>
+
+        <div className="layout" style={{ gridTemplateColumns: "1fr", paddingTop: 8 }}>
+          <div className="promises">
+            {INITIAL_NEWS.map((n, idx) => (
+              <article key={n.id} className={`card show${idx % 3 === 2 ? " accent" : ""}`}>
+                <div className="head">
+                  <div className="num">{String(idx + 1).padStart(2, "0")}</div>
+                  <div className="htext">
+                    <div className="em">{n.date}</div>
+                    <h2>{n.title}</h2>
+                  </div>
+                </div>
+                <ul>
+                  <li>{n.body}</li>
+                </ul>
+              </article>
+            ))}
+          </div>
+        </div>
+
+        <SampleFooter />
+      </div>
     </div>
   );
 }

@@ -59,7 +59,7 @@ export default function AdminLayout({
   }
 
   return (
-    <div className="flex min-h-screen bg-gray-50">
+    <div className="admin-scope flex min-h-screen bg-gray-50">
       {/* Desktop Sidebar */}
       <aside className="hidden w-56 shrink-0 flex-col bg-sky-800 md:flex">
         <div className="px-5 py-6">

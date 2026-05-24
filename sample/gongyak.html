@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="이승효 후보 공약 - 동대문구 제2선거구(이문·회기·휘경) 8대 약속">
+<title>공약 - 이승효</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@400;500;700;900&family=Archivo:wght@600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --red:#E4032E;          /* 진보당 레드 (포인트) */
+    --red-deep:#B30021;
+    --sky:#BFE0F4;
+    --sky-soft:#DCEFFB;
+    --sky-deep:#5BA7DC;
+    --navy:#15233F;
+    --navy-soft:#33476e;
+    --indigo:#221D7A;       /* 벽보 '동대문구 정치교체' 색 */
+    --ink:#15233F;          /* 본문 = 네이비 */
+    --ink-soft:#33476e;
+    --paper:#F2F8FE;        /* 밝은 하늘 베이스 */
+    --paper-2:#E6F2FB;
+    --line:#15233F;
+    --white:#ffffff;
+    --r:14px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Noto Sans KR',sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  /* 종이 그레인 */
+  body::before{
+    content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.05;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .wrap{position:relative;z-index:1}
+
+  /* ── 헤더 ── */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(246,241,231,.88);
+    backdrop-filter:blur(10px);
+    border-bottom:2px solid var(--ink);
+  }
+  .nav{
+    max-width:1180px;margin:0 auto;padding:13px 22px;
+    display:flex;align-items:center;gap:14px;
+  }
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+  .party{
+    font-family:'Black Han Sans';font-size:14px;letter-spacing:.5px;
+    background:var(--red);color:#fff;padding:5px 9px;border-radius:6px;line-height:1;
+  }
+  .cand{font-family:'Black Han Sans';font-size:21px;color:var(--ink);letter-spacing:1px}
+  .menu{margin-left:auto;display:flex;gap:4px}
+  .menu a{
+    text-decoration:none;color:var(--ink-soft);font-weight:700;font-size:14.5px;
+    padding:8px 12px;border-radius:8px;transition:.18s;
+  }
+  .menu a:hover{background:var(--ink);color:var(--paper)}
+  .menu a.on{color:var(--red)}
+  .menu a.donate{background:var(--red);color:#fff}
+  .menu a.donate:hover{background:var(--red-deep)}
+  .burger{margin-left:auto;display:none;background:none;border:0;font-size:24px;cursor:pointer;color:var(--ink)}
+  @media(max-width:820px){
+    .menu{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;
+      background:var(--paper);border-bottom:2px solid var(--ink);padding:10px 16px;gap:2px}
+    .menu.open{display:flex}
+    .menu a{padding:13px 10px;border-radius:0;border-bottom:1px solid rgba(0,0,0,.07)}
+    .menu a.donate{border-radius:8px;margin-top:8px;text-align:center}
+    .burger{display:block}
+  }
+
+  /* ── 히어로 ── */
+  .hero{
+    max-width:1180px;margin:0 auto;padding:64px 22px 30px;
+  }
+  .kicker{
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:'Archivo';font-weight:800;letter-spacing:2px;font-size:12.5px;
+    color:var(--red);text-transform:uppercase;margin-bottom:18px;
+  }
+  .kicker::before{content:"";width:34px;height:3px;background:var(--red);display:inline-block}
+  .hero h1{
+    font-family:'Black Han Sans';font-weight:400;
+    font-size:clamp(38px,8.5vw,86px);line-height:.98;letter-spacing:-1px;color:var(--ink);
+  }
+  .hero h1 .hl{color:var(--red)}
+  .hero .sub{
+    margin-top:22px;max-width:640px;font-size:clamp(15px,2.4vw,18px);
+    color:var(--ink-soft);font-weight:500;
+  }
+  .hero .meta{
+    margin-top:30px;display:flex;flex-wrap:wrap;gap:10px;
+  }
+  .tag{
+    font-weight:700;font-size:13.5px;padding:7px 14px;border:1.5px solid var(--ink);
+    border-radius:40px;background:var(--white);
+  }
+  .tag.fill{background:var(--ink);color:var(--paper)}
+
+  /* ── 본문 레이아웃 ── */
+  .layout{
+    max-width:1180px;margin:0 auto;padding:30px 22px 90px;
+    display:grid;grid-template-columns:230px 1fr;gap:48px;align-items:start;
+  }
+  /* 사이드 인덱스 */
+  .index{position:sticky;top:84px}
+  .index .lbl{
+    font-family:'Archivo';font-weight:800;font-size:12px;letter-spacing:1.5px;
+    color:var(--red);margin-bottom:14px;text-transform:uppercase;
+  }
+  .index a{
+    display:flex;gap:11px;align-items:baseline;text-decoration:none;color:var(--ink-soft);
+    padding:9px 0;border-top:1px solid rgba(0,0,0,.12);font-size:14px;font-weight:600;
+    line-height:1.35;transition:.18s;
+  }
+  .index a:last-child{border-bottom:1px solid rgba(0,0,0,.12)}
+  .index a .num{font-family:'Archivo';font-weight:800;color:#9aa7bd;font-size:13px;min-width:22px}
+  .index a:hover,.index a.active{color:var(--red)}
+  .index a:hover .num,.index a.active .num{color:var(--red)}
+
+  /* 카드 */
+  .promises{display:flex;flex-direction:column;gap:18px}
+  .card{
+    background:var(--white);border:2px solid var(--ink);border-radius:var(--r);
+    overflow:hidden;position:relative;
+    box-shadow:6px 6px 0 var(--ink);
+    opacity:0;transform:translateY(24px);
+  }
+  .card.show{animation:rise .6s cubic-bezier(.2,.7,.2,1) forwards}
+  @keyframes rise{to{opacity:1;transform:none}}
+  .card .head{
+    display:flex;align-items:stretch;gap:0;border-bottom:2px solid var(--ink);
+  }
+  .card .num{
+    font-family:'Archivo';font-weight:900;font-size:clamp(34px,6vw,52px);
+    color:#fff;background:var(--navy);display:flex;align-items:center;justify-content:center;
+    width:clamp(70px,16vw,96px);flex:none;letter-spacing:-1px;
+  }
+  .card.accent .num{background:var(--indigo)}
+  .card .htext{padding:16px 20px;display:flex;flex-direction:column;justify-content:center}
+  .card .htext .em{font-family:'Archivo';font-weight:800;font-size:11px;letter-spacing:1.5px;color:var(--red);text-transform:uppercase;margin-bottom:3px}
+  .card.accent .htext .em{color:var(--ink-soft)}
+  .card .htext h2{
+    font-family:'Black Han Sans';font-weight:400;font-size:clamp(19px,3.6vw,26px);
+    line-height:1.18;letter-spacing:-.5px;
+  }
+  .card ul{list-style:none;padding:18px 22px 24px}
+  .card li{
+    position:relative;padding:11px 0 11px 28px;font-size:15.5px;font-weight:500;
+    color:var(--ink-soft);border-top:1px dashed rgba(0,0,0,.14);line-height:1.55;
+  }
+  .card li:first-child{border-top:0}
+  .card li::before{
+    content:"";position:absolute;left:2px;top:18px;width:12px;height:12px;
+    background:var(--sky-deep);border-radius:3px;transform:rotate(45deg);
+  }
+  .card.accent li::before{background:var(--indigo)}
+  .card li b{color:var(--ink);font-weight:700}
+
+  /* ── CTA ── */
+  .cta{
+    max-width:1180px;margin:0 auto 70px;padding:0 22px;
+  }
+  .cta-inner{
+    background:var(--ink);color:var(--paper);border-radius:18px;
+    padding:clamp(34px,6vw,56px);text-align:center;position:relative;overflow:hidden;
+  }
+  .cta-inner::after{
+    content:"이문 · 회기 · 휘경";position:absolute;right:-10px;bottom:-26px;
+    font-family:'Black Han Sans';font-size:clamp(50px,12vw,120px);color:rgba(255,255,255,.05);
+    white-space:nowrap;pointer-events:none;
+  }
+  .cta h3{font-family:'Black Han Sans';font-weight:400;font-size:clamp(24px,5vw,40px);line-height:1.12;position:relative}
+  .cta p{margin-top:14px;color:#c3cfe2;font-weight:500;position:relative}
+  .cta .btns{margin-top:28px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;position:relative}
+  .btn{
+    text-decoration:none;font-weight:700;font-size:15px;padding:14px 28px;border-radius:50px;transition:.2s;
+  }
+  .btn.primary{background:var(--red);color:#fff}
+  .btn.primary:hover{background:var(--red-deep);transform:translateY(-2px)}
+  .btn.ghost{background:transparent;color:var(--paper);border:1.6px solid rgba(255,255,255,.5)}
+  .btn.ghost:hover{background:rgba(255,255,255,.12)}
+
+  /* ── 푸터 ── */
+  footer{border-top:2px solid var(--ink);background:var(--paper-2)}
+  .foot{
+    max-width:1180px;margin:0 auto;padding:34px 22px;
+    display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between;
+  }
+  .foot .id{display:flex;align-items:center;gap:10px}
+  .foot .links{display:flex;flex-wrap:wrap;gap:6px}
+  .foot .links a{text-decoration:none;color:var(--ink-soft);font-weight:600;font-size:14px;padding:6px 10px;border-radius:6px}
+  .foot .links a:hover{background:var(--ink);color:var(--paper)}
+  .foot small{display:block;width:100%;color:#7e8aa3;font-size:12.5px;margin-top:6px}
+
+  @media(max-width:820px){
+    .layout{grid-template-columns:1fr;gap:8px;padding-top:18px}
+    .index{position:static;margin-bottom:14px;
+      background:var(--white);border:2px solid var(--ink);border-radius:12px;padding:14px 16px}
+    .index .scroller{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;-webkit-overflow-scrolling:touch}
+    .index a{border:1.5px solid var(--ink);border-radius:40px;padding:7px 13px;white-space:nowrap;flex:none}
+    .index a:last-child{border-bottom:1.5px solid var(--ink)}
+    .index a .ttl{display:none}
+    .index a .num{color:var(--ink)}
+    .card{box-shadow:4px 4px 0 var(--ink)}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <nav class="nav">
+    <a class="brand" href="/">
+      <span class="party">진보당</span>
+      <span class="cand">이승효</span>
+    </a>
+    <button class="burger" aria-label="메뉴" onclick="document.getElementById('m').classList.toggle('open')">☰</button>
+    <div class="menu" id="m">
+      <a href="/">홈</a>
+      <a href="/about">소개</a>
+      <a href="/pledges" class="on">공약</a>
+      <a href="/news">소식</a>
+      <a href="/voice">의견함</a>
+    </div>
+  </nav>
+</header>
+
+<section class="hero">
+  <span class="kicker">동대문구 제2선거구 · 시의원 후보 이승효</span>
+  <h1>이문·휘경·회기동,<br><span class="hl">살만 하십니까?</span></h1>
+  <p class="sub">출퇴근 교통 문제부터 달빛어린이병원, 어르신돌봄, 전세사기, 노동과 골목상권까지 — 주민의 하루를 바꾸는 이승효의 <b>8대 약속</b>입니다.</p>
+  <div class="meta">
+    <span class="tag fill">이문 1·2동</span>
+    <span class="tag fill">휘경 1·2동</span>
+    <span class="tag fill">회기동</span>
+    <span class="tag">8대 약속 / 30개 정책</span>
+  </div>
+</section>
+
+<div class="layout">
+
+  <aside class="index">
+    <div class="lbl">8대 약속</div>
+    <div class="scroller">
+      <a href="#p1"><span class="num">01</span><span class="ttl">편안한 출퇴근, 다니기 좋은 동네</span></a>
+      <a href="#p2"><span class="num">02</span><span class="ttl">아이 키우기 좋게, 어르신이 건강하게</span></a>
+      <a href="#p3"><span class="num">03</span><span class="ttl">청년·여성이 행복하고 안전하게</span></a>
+      <a href="#p4"><span class="num">04</span><span class="ttl">전세사기, 세입자가 책임지지 않도록</span></a>
+      <a href="#p5"><span class="num">05</span><span class="ttl">동부간선 지하화, 주민과 함께</span></a>
+      <a href="#p6"><span class="num">06</span><span class="ttl">노동이 존중받는 동대문</span></a>
+      <a href="#p7"><span class="num">07</span><span class="ttl">자영업자·소상공인의 버팀목</span></a>
+      <a href="#p8"><span class="num">08</span><span class="ttl">내란세력 청산, 정치교체</span></a>
+    </div>
+  </aside>
+
+  <div class="promises">
+
+    <article class="card" id="p1">
+      <div class="head">
+        <div class="num">01</div>
+        <div class="htext"><div class="em">Transit · 교통</div>
+          <h2>편안한 출퇴근, 다니기 좋은 우리 동네</h2></div>
+      </div>
+      <ul>
+        <li>대중교통 노선 배차 개선 및 교통 사각지대 해소</li>
+        <li>폭염·혹한을 피할 수 있는 <b>스마트 정류장</b> 설치 및 확대</li>
+        <li><b>외대앞역 2번 승강장 엘리베이터 설치</b> — 유모차·휠체어 이용불가 상태 종식</li>
+        <li>신이문역 공사 조속 추진 및 주변 보안조명·CCTV·안심귀가 거점 보완</li>
+        <li>회기역 1호선·경의중앙선 구간 개선 종합대책 요구</li>
+        <li><b>휘경2동 교통문제 개선</b> — 면목선 배봉·장안교 정거장을 인근 대단지 아파트에서도 도보로 이용 가능한 위치에 설정하도록 역 위치 의견 적극 개진, 청량리역 GTX 연계노선 확충</li>
+        <li>무장애 보행로(1층 경사로) 동대문 우선 사업 지정</li>
+      </ul>
+    </article>
+
+    <article class="card" id="p2">
+      <div class="head">
+        <div class="num">02</div>
+        <div class="htext"><div class="em">Care · 돌봄</div>
+          <h2>아이 키우기 좋게, 어르신이 건강하게</h2></div>
+      </div>
+      <ul>
+        <li>동대문구 야간·주말 <b>달빛어린이병원</b> 추진 및 서울시 예산 지원</li>
+        <li>거점형 키움센터 유치, 청소년 문화의 집 신설 등 아동·청소년 복지문화 공간 확충</li>
+        <li>어르신 대상포진 예방접종 무료대상 확대</li>
+        <li>어르신 돌봄 주치의 시범사업 동대문 유치</li>
+      </ul>
+    </article>
+
+    <article class="card" id="p3">
+      <div class="head">
+        <div class="num">03</div>
+        <div class="htext"><div class="em">Youth · Women</div>
+          <h2>청년·여성이 행복하고 안전하게</h2></div>
+      </div>
+      <ul>
+        <li>신혼부부·청년 공공임대주택 공급</li>
+        <li>청년 마음건강지원 확대 — 서울청년센터 동대문 거점 강화</li>
+        <li><b>디지털성범죄안심지원센터</b> 설치</li>
+        <li>여성·청소년 생리대 보편지원 전면 확대</li>
+      </ul>
+    </article>
+
+    <article class="card" id="p4">
+      <div class="head">
+        <div class="num">04</div>
+        <div class="htext"><div class="em">Housing · 주거</div>
+          <h2>전세사기 입증을 세입자가 책임지지 않도록</h2></div>
+      </div>
+      <ul>
+        <li><b>전세사기 신고·증거수집 원스톱 지원</b> — 임차인은 신고만, 서울시가 등기·체납·중개기록 자료수집을 대행하고 수사기관에 이관</li>
+        <li>모든 임대인 전세금 반환보증 의무가입 법 개정 촉구 및 시 차원의 보증료 지원 확대</li>
+      </ul>
+    </article>
+
+    <article class="card" id="p5">
+      <div class="head">
+        <div class="num">05</div>
+        <div class="htext"><div class="em">Dongbu Expressway</div>
+          <h2>동부간선 지하화, 주민과 함께 다시</h2></div>
+      </div>
+      <ul>
+        <li>진입 램프 구간 문제 재검토 — 시의회 결의안·예산심의 적극 활용</li>
+        <li>통학로·산책로 대안 마련 의무화 — 도시계획 조례 개정</li>
+        <li>주민협의체 조례화</li>
+      </ul>
+    </article>
+
+    <article class="card accent" id="p6">
+      <div class="head">
+        <div class="num">06</div>
+        <div class="htext"><div class="em">Labor · 노동</div>
+          <h2>노동이 존중받는 동대문 만들기</h2></div>
+      </div>
+      <ul>
+        <li>동대문구 <b>노동자 종합 지원센터</b> 설치</li>
+        <li>플랫폼·특수고용노동자 권리보장 시범 사업 동대문구 유치</li>
+        <li>돌봄노동자 권익보호 조례 제정 및 처우 개선</li>
+      </ul>
+    </article>
+
+    <article class="card accent" id="p7">
+      <div class="head">
+        <div class="num">07</div>
+        <div class="htext"><div class="em">Small Business</div>
+          <h2>자영업자·소상공인의 버팀목이 필요해</h2></div>
+      </div>
+      <ul>
+        <li>소상공인 부채조정·재기 지원 시 보조 확대</li>
+        <li>1인 자영업자 사회 안전망 확충</li>
+        <li>공공배달앱 동대문구 활성화</li>
+      </ul>
+    </article>
+
+    <article class="card" id="p8">
+      <div class="head">
+        <div class="num">08</div>
+        <div class="htext"><div class="em">Politics · 정치교체</div>
+          <h2>내란세력 완전 청산! 동대문구 정치교체!</h2></div>
+      </div>
+      <ul>
+        <li>오세훈 서울시정의 피해 회복</li>
+        <li>공직자 헌정질서 책임 강화</li>
+      </ul>
+    </article>
+
+  </div>
+</div>
+
+<section class="cta">
+  <div class="cta-inner">
+    <h3>주민의 하루를 바꾸는<br>가장 확실한 한 표.</h3>
+    <p>이승효의 약속이 동네를 바꿉니다. 함께 만들어 주세요.</p>
+    <div class="btns">
+      <a class="btn primary" href="/voice">의견 보내기</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot">
+    <div class="id"><span class="party">진보당</span><span class="cand">이승효</span></div>
+    <div class="links">
+      <a href="/">홈</a><a href="/about">소개</a><a href="/pledges">공약</a>
+      <a href="/news">소식</a><a href="/voice">의견함</a>
+    </div>
+    <small>동대문구 제2선거구(이문·회기·휘경) 서울시의원 후보 이승효 · 진보당</small>
+  </div>
+</footer>
+
+</div>
+
+<script>
+  // 스크롤 등장
+  const cards=document.querySelectorAll('.card');
+  const io=new IntersectionObserver((e)=>{
+    e.forEach((x,i)=>{if(x.isIntersecting){x.target.style.animationDelay=(i%3*60)+'ms';x.target.classList.add('show');io.unobserve(x.target);}});
+  },{threshold:.12});
+  cards.forEach(c=>io.observe(c));
+
+  // 인덱스 활성 표시
+  const links=document.querySelectorAll('.index a');
+  const map={};links.forEach(l=>map[l.getAttribute('href').slice(1)]=l);
+  const spy=new IntersectionObserver((e)=>{
+    e.forEach(x=>{if(x.isIntersecting){links.forEach(l=>l.classList.remove('active'));map[x.target.id]?.classList.add('active');}});
+  },{rootMargin:'-30% 0px -60% 0px'});
+  cards.forEach(c=>spy.observe(c));
+
+  // 모바일 메뉴 클릭 닫기
+  document.querySelectorAll('#m a').forEach(a=>a.addEventListener('click',()=>document.getElementById('m').classList.remove('open')));
+</script>
+</body>
+</html>
